@@ -1,6 +1,6 @@
 ﻿namespace TicToe
 {
-    internal struct CellViewRef
+    public struct CellViewRef
     {
         public CellView value;
     }

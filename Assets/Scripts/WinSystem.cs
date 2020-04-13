@@ -2,24 +2,21 @@
 
 namespace TicToe
 {
-    public class WinSystem : IEcsRunSystem
+    internal class WinSystem : IEcsRunSystem
     {
-        private EcsFilter<Winner, Taken> _filter;
+        private EcsFilter<Win> _wins;
         private SceneData _sceneData;
-
-
+        
         public void Run()
         {
-            if (!_sceneData.UI.WinScreen.gameObject.activeInHierarchy)
+            if (!_wins.IsEmpty())
             {
-                foreach (var index in _filter)
+                foreach (var index in _wins)
                 {
-                    ref var winnerType = ref _filter.Get2(index);
+                    var winner = _wins.Get1(index).IsCross;
 
+                    _sceneData.UI.WinScreen.WinnerText.text = winner ? "Крестик" : "Нолик";
                     _sceneData.UI.WinScreen.Show(true);
-                    _sceneData.UI.WinScreen.SetWinner(winnerType.value);
-
-                    _filter.GetEntity(index).Unset<Winner>();
                 }
             }
         }

@@ -1,7 +1,7 @@
 ﻿namespace TicToe
 {
-    public struct Taken
+    internal struct Taken
     {
-        public SignType value;
+        public bool isCross;
     }
 }

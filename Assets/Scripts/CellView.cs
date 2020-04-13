@@ -1,10 +1,10 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
     public class CellView : MonoBehaviour
     {
-        public EcsEntity Entity;
+        public EcsEntity value;
     }
 }

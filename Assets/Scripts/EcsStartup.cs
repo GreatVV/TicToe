@@ -1,17 +1,15 @@
-using System;
 using Leopotam.Ecs;
 using UnityEngine;
-using UnityEngine.XR.WSA;
+using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
-namespace Client
-{
-    sealed class EcsStartup : MonoBehaviour
-    {
+namespace TicToe {
+    sealed class EcsStartup : MonoBehaviour {
         EcsWorld _world;
         EcsSystems _systems;
 
         public SceneData SceneData;
-        public Configuration Configuration;
+        public GameState GameState = new GameState();
 
         void Start()
         {
@@ -25,37 +23,33 @@ namespace Client
 #endif
             _systems
                 // register your systems here, for example:
-                .Add(new InitializeFieldSystem())
+                .Add(new InitFieldSystem())
+                .Add(new CreateCellViewSystem())
                 .Add(new ControlSystem())
                 .Add(new MakeAMoveSystem())
-                .Add(new SpawnSignSystem())
+                .Add(new CreateTakenViewSystem())
                 .Add(new CheckWinSystem())
-                .Add(new ShowWinSystem())
-                .Add(new CheckLoseSystem())
+                .Add(new WinSystem())
 
                 // register one-frame components (order is important), for example:
-                .OneFrame<Clicked>()
+                // .OneFrame<TestComponent1> ()
                 // .OneFrame<TestComponent2> ()
 
                 // inject service instances here (order doesn't important), for example:
-                .Inject(new GameState())
                 .Inject(SceneData)
-                .Inject(Configuration)
+                .Inject(GameState)
                 .Init();
         }
 
-        void Update()
-        {
-            _systems?.Run();
+        void Update () {
+            _systems?.Run ();
         }
 
-        void OnDestroy()
-        {
-            if (_systems != null)
-            {
-                _systems.Destroy();
+        void OnDestroy () {
+            if (_systems != null) {
+                _systems.Destroy ();
                 _systems = null;
-                _world.Destroy();
+                _world.Destroy ();
                 _world = null;
             }
         }

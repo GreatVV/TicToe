@@ -1,12 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
+    [Serializable]
     public class GameState
     {
-        public bool IsCross;
-        public Dictionary<Vector2Int, EcsEntity> Cells = new Dictionary<Vector2Int, EcsEntity>();
+        public bool IsCrossTurn;
+        public readonly Dictionary<Vector2Int, EcsEntity> Cells = new Dictionary<Vector2Int, EcsEntity>();
     }
 }

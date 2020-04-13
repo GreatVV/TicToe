@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
-    public class SceneData : MonoBehaviour 
+    public class SceneData : MonoBehaviour
     {
+        public int Width;
+        public int Height;
+
+        public Vector2 Offset;
         public Camera Camera;
-        public int Width = 3;
-        public int Height = 3;
-        public float Offset = 0.1f;
+
+        public CellView Cell;
+        public TakenView Ring;
+        public TakenView Cross;
+
         public UI UI;
     }
 }

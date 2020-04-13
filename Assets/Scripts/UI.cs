@@ -1,12 +1,9 @@
-﻿using UnityComponents;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
     public class UI : MonoBehaviour
     {
-        public GameHUD GameHUD;
         public WinScreen WinScreen;
-        public LoseScreen LoseScreen;
     }
 }

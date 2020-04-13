@@ -1,30 +1,26 @@
 ﻿using Leopotam.Ecs;
 
-namespace Client
+namespace TicToe
 {
-    internal class MakeAMoveSystem : IEcsRunSystem
+    public class MakeAMoveSystem : IEcsRunSystem
     {
-        private EcsFilter<Cell, Clicked, Position>.Exclude<Cross, Ring> _filter;
+        private EcsFilter<Cell, Clicked>.Exclude<Taken> _filter;
         private GameState _gameState;
-        private EcsWorld _world;
-        private SceneData _sceneData;
-
+        
         public void Run()
         {
             foreach (var index in _filter)
             {
-                if (_gameState.IsCross)
+                if (_gameState.IsCrossTurn)
                 {
-                    _filter.GetEntity(index).Set<Cross>();
+                    _filter.GetEntity(index).Set<Taken>().isCross = true;
                 }
                 else
                 {
-                    _filter.GetEntity(index).Set<Ring>();
+                    _filter.GetEntity(index).Set<Taken>().isCross = false;
                 }
 
-                _gameState.IsCross = !_gameState.IsCross;
-
-                _sceneData.UI.GameHUD.TurnOrder.text = _gameState.IsCross ? "Ходят крестики" : "Ходят нолики";
+                _gameState.IsCrossTurn = !_gameState.IsCrossTurn;
 
                 _filter.GetEntity(index).Set<CheckWin>();
             }

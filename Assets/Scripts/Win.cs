@@ -1,6 +1,6 @@
-﻿namespace Client
+﻿namespace TicToe
 {
-    internal struct Win
+    public struct Win
     {
         public bool IsCross;
     }

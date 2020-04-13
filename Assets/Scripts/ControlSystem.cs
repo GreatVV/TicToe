@@ -1,9 +1,9 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
-    internal class ControlSystem : IEcsRunSystem
+    public class ControlSystem : IEcsRunSystem
     {
         private SceneData _sceneData;
         
@@ -14,10 +14,10 @@ namespace Client
                 var ray = _sceneData.Camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out var hitInfo))
                 {
-                    var cellView = hitInfo.collider.gameObject.GetComponent<CellView>();
+                    var cellView = hitInfo.collider.GetComponent<CellView>();
                     if (cellView)
                     {
-                        cellView.Entity.Set<Clicked>();
+                        cellView.value.Set<Clicked>();
                     }
                 }
             }

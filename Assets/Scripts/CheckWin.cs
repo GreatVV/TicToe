@@ -1,6 +1,6 @@
-﻿namespace Client
+﻿namespace TicToe
 {
-    internal struct CheckWin
+    public struct CheckWin
     {
     }
 }

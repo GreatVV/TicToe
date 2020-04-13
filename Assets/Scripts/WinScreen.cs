@@ -1,29 +1,19 @@
-﻿using System;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TicToe
 {
-    public class WinScreen : Screen
+    public class WinScreen : MonoBehaviour
     {
-        public Text Text;
-        
-        public void SetWinner(SignType value)
+        public Text WinnerText;
+
+        public void Show(bool state)
         {
-            switch (value)
-            {
-                case SignType.Cross:
-                    Text.text = "Крестик победил";
-                    break;
-                case SignType.Ring:
-                    Text.text = "Нолик победил";
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(value), value, null);
-            }
+            gameObject.SetActive(state);
         }
 
-        public void OnRestartClick()
+        public void OnClick()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

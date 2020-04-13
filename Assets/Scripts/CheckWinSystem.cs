@@ -1,22 +1,21 @@
-﻿using System.Xml.Schema;
-using Leopotam.Ecs;
+﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
-    internal class CheckWinSystem : IEcsRunSystem
+    public class CheckWinSystem : IEcsRunSystem
     {
-        private EcsFilter<CheckWin, Position> _filter;
-        private GameState _gameState;
+        private EcsFilter<Cell, CheckWin, Taken, Position> _filter;
         private SceneData _sceneData;
+        private GameState _gameState;
         private EcsWorld _world;
         
         public void Run()
         {
             foreach (var index in _filter)
             {
-                var position = _filter.Get2(index).value;
-
+                var position = _filter.Get4(index).value;
+                
                 //check horizontal
                 {
                     var crossNumber = 0;
@@ -26,14 +25,17 @@ namespace Client
                         var pos = new Vector2Int(x, position.y);
                         var entity = _gameState.Cells[pos];
 
-                        if (entity.Has<Cross>())
+                        if (entity.Has<Taken>())
                         {
-                            crossNumber++;
-                        }
-
-                        if (entity.Has<Ring>())
-                        {
-                            ringNumber++;
+                            var isCross = entity.Ref<Taken>().Unref().isCross;
+                            if (isCross)
+                            {
+                                crossNumber++;
+                            }
+                            else
+                            {
+                                ringNumber++;
+                            }
                         }
                     }
 
@@ -57,14 +59,17 @@ namespace Client
                         var pos = new Vector2Int(position.x, y);
                         var entity = _gameState.Cells[pos];
 
-                        if (entity.Has<Cross>())
+                        if (entity.Has<Taken>())
                         {
-                            crossNumber++;
-                        }
-
-                        if (entity.Has<Ring>())
-                        {
-                            ringNumber++;
+                            var isCross = entity.Ref<Taken>().Unref().isCross;
+                            if (isCross)
+                            {
+                                crossNumber++;
+                            }
+                            else
+                            {
+                                ringNumber++;
+                            }
                         }
                     }
 
@@ -88,14 +93,17 @@ namespace Client
                         var pos = new Vector2Int(x, y);
                         var entity = _gameState.Cells[pos];
 
-                        if (entity.Has<Cross>())
+                        if (entity.Has<Taken>())
                         {
-                            crossNumber++;
-                        }
-
-                        if (entity.Has<Ring>())
-                        {
-                            ringNumber++;
+                            var isCross = entity.Ref<Taken>().Unref().isCross;
+                            if (isCross)
+                            {
+                                crossNumber++;
+                            }
+                            else
+                            {
+                                ringNumber++;
+                            }
                         }
                     }
 
@@ -119,14 +127,17 @@ namespace Client
                         var pos = new Vector2Int(x, y);
                         var entity = _gameState.Cells[pos];
 
-                        if (entity.Has<Cross>())
+                        if (entity.Has<Taken>())
                         {
-                            crossNumber++;
-                        }
-
-                        if (entity.Has<Ring>())
-                        {
-                            ringNumber++;
+                            var isCross = entity.Ref<Taken>().Unref().isCross;
+                            if (isCross)
+                            {
+                                crossNumber++;
+                            }
+                            else
+                            {
+                                ringNumber++;
+                            }
                         }
                     }
 
@@ -140,8 +151,7 @@ namespace Client
                         _world.NewEntity().Set<Win>().IsCross = true;
                     }
                 }
-
-
+                
                 _filter.GetEntity(index).Unset<CheckWin>();
             }
         }

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Client
+namespace TicToe
 {
-    public struct Position
+    internal struct Position
     {
         public Vector2Int value;
     }

@@ -1,7 +1,6 @@
-﻿namespace Client
+﻿namespace TicToe
 {
-    public struct Cell
+    internal struct Cell
     {
-        public CellView view;
     }
 }
