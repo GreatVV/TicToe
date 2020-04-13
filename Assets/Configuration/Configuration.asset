@@ -9,15 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b92bb7a610934bfab6c7692e42c9a53f, type: 3}
+  m_Script: {fileID: 11500000, guid: a51974af45144498b442f1b28aab6f7e, type: 3}
   m_Name: Configuration
   m_EditorClassIdentifier: 
-  LevelWidth: 10
-  LevelHeight: 10
-  ChainLength: 5
-  CellView: {fileID: 546335704106974783, guid: 115e2cdf5a6570d408e1a6c0f190d76a, type: 3}
-  Offset: {x: 0.1, y: 0.1}
-  CrossView: {fileID: 7682295583434856649, guid: b9a474fa2cae41445a1964ed8bb8b4d4,
-    type: 3}
-  RingView: {fileID: 7457666933316734490, guid: 0349c9181753f4d47b48cb6fb8e0fc83,
-    type: 3}
+  Cell: {fileID: 6490146133397906551, guid: fa44998b99f86ae4ea8e24f36924faab, type: 3}
+  Cross: {fileID: 2750046990026534645, guid: 30f9dcb5cd224ad44a7b86461d323b5f, type: 3}
+  Ring: {fileID: 4362775575773495744, guid: 7c41a44d150485942904a5d1ae7fb41b, type: 3}

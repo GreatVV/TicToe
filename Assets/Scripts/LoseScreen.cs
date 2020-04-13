@@ -1,12 +1,18 @@
-﻿using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace TicToe
+namespace Client
 {
-    public class LoseScreen : Screen
+    public class LoseScreen : MonoBehaviour
     {
-        public void OnRestartClick()
+        public void OnClick()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void Show(bool state)
+        {
+            gameObject.SetActive(state);
         }
     }
 }

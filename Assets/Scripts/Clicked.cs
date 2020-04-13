@@ -1,6 +1,6 @@
-﻿namespace TicToe
+﻿namespace Client
 {
-    public struct Clicked
+    internal struct Clicked
     {
     }
 }

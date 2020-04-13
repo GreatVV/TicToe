@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TicToe
+namespace Client
 {
     public struct Position
     {

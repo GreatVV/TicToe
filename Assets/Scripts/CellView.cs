@@ -1,7 +1,7 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace TicToe
+namespace Client
 {
     public class CellView : MonoBehaviour
     {

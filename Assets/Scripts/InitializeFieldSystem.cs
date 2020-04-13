@@ -1,30 +1,34 @@
 ﻿using Leopotam.Ecs;
 using UnityEngine;
 
-namespace TicToe
+namespace Client
 {
-    internal class InitializeFieldSystem : IEcsInitSystem
+    public class InitializeFieldSystem : IEcsInitSystem
     {
+        private SceneData _sceneData;
         private Configuration _configuration;
         private EcsWorld _world;
         private GameState _gameState;
-
+        
         public void Init()
         {
-            for (int x = 0; x < _configuration.LevelWidth; x++)
+            for (int i = 0; i < _sceneData.Width; i++)
             {
-                for (int y = 0; y < _configuration.LevelHeight; y++)
+                for (int j = 0; j < _sceneData.Height; j++)
                 {
-                    var cellEntity = _world.NewEntity();
-                    cellEntity.Set<Cell>();
-                    var position = new Vector2Int(x,y);
-                    cellEntity.Set<Position>().value = position;
+                    var entity = _world.NewEntity();
+                    var value = new Vector2Int(i,j);
+                    entity.Set<Position>().value = value;
+                    var cellView = Object.Instantiate(_configuration.Cell, new Vector3(i,j, 0) + Vector3.one / 2f + new Vector3(i * _sceneData.Offset, j* _sceneData.Offset), Quaternion.identity);
+                    entity.Set<Cell>().view = cellView;
+                    cellView.Entity = entity;
 
-                    _gameState.Cells[position] = cellEntity;
+                    _gameState.Cells[value] = entity;
                 }
             }
 
-            _world.NewEntity().Set<UpdateCameraEvent>();
+            _sceneData.Camera.transform.position = new Vector3((_sceneData.Width + (_sceneData.Width - 1) * _sceneData.Offset)/2f, (_sceneData.Height + (_sceneData.Height - 1) * _sceneData.Offset)/2f);
+            _sceneData.Camera.orthographicSize = (_sceneData.Height + (_sceneData.Height - 1) * _sceneData.Offset)/2f;
         }
     }
 }

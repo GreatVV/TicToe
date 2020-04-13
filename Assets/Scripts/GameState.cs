@@ -2,11 +2,11 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace TicToe
+namespace Client
 {
     public class GameState
     {
-        public SignType CurrentType = SignType.Ring;
-        public readonly Dictionary<Vector2Int, EcsEntity> Cells = new Dictionary<Vector2Int, EcsEntity>();
+        public bool IsCross;
+        public Dictionary<Vector2Int, EcsEntity> Cells = new Dictionary<Vector2Int, EcsEntity>();
     }
 }
