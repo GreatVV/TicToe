@@ -1,0 +1,51 @@
+# =============== #
+# Unity generated #
+# =============== #
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+ 
+# ======================================================= #
+# Visual Studio / MonoDevelop / Rider generated / Consulo #
+# ======================================================= #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln
+/*.user
+/*.unityproj
+/*.booproj
+/.idea*/
+/Debug/
+/obj/
+/.idea/
+*.csproj
+*.sln
+/UnityPackageManager/
+/.consulo*/
+ 
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store*
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+[Tt]humbs.db
+
+#========#
+# Custom #
+#========#
+*.pdb
+*.pdb.meta
+/Assets/Temp*
+/Assets/Plugins/Editor/JetBrains/
+.*/
+builds/
