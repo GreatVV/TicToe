@@ -15,7 +15,7 @@ namespace TicToe
                 return 0;
             }
 
-            var startType = startEntity.Ref<Taken>().Unref().value;
+            var startType = startEntity.Set<Taken>().value;
 
             var horizontalLength = Count(cells, position, new Vector2Int(1, 0), startType, 1, new Vector2Int(-1, 0));
             var verticalLength = Count(cells, position, new Vector2Int(0, 1), startType, 1, new Vector2Int(0, -1));
@@ -38,7 +38,7 @@ namespace TicToe
                 }
                 else
                 {
-                    var type = entity.Ref<Taken>().Unref().value;
+                    var type = entity.Set<Taken>().value;
                     if (type != startType)
                     {
                         break;
@@ -57,7 +57,7 @@ namespace TicToe
                     break;
                 }
 
-                var type = entity.Ref<Taken>().Unref().value;
+                var type = entity.Set<Taken>().value;
                 if (type != startType)
                 {
                     break;
