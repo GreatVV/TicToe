@@ -1,4 +1,4 @@
-# TicToe
+# TicToe v1
 Tic Toe on LeoECS
 
 Example project for test [LeoECS](https://github.com/Leopotam/ecs) in real game.
